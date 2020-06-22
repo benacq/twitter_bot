@@ -8,7 +8,7 @@ ACCESS_KEY = os.environ.get('TWITTER_ACCESS_TOKEN_KEY')  # replace TWITTER_ACCES
 ACCESS_SECRET = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')  # replace TWITTER_ACCESS_TOKEN_SECRET with you api key
 
 # TEST HASHTAGS
-hash_tags = ["#darksidedev", "#darksidedev1", "#darksidedev2", "#darksidedev3"]
+hash_tags = "#darksidedev OR #darksidedev1 OR #darksidedev2 OR #darksidedev3"
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -20,7 +20,7 @@ def search_tweets(query):
     return tweets
 
 
-target_tweet = search_tweets(hash_tags[0])
+target_tweet = search_tweets(hash_tags)
 
 
 def like_tweet(tweets):
@@ -80,4 +80,7 @@ def reply_tweet(tweets):
             break
 
 
+like_tweet(target_tweet)
 retweet(target_tweet)
+reply_tweet(target_tweet)
+
